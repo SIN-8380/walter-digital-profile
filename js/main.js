@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (['HTML', 'CSS', 'JavaScript'].includes(skill.name)) return 'Frontend';
     if (['Node.js', 'Python', 'Java'].includes(skill.name)) return 'Backend';
     if (['MySQL'].includes(skill.name)) return 'Database';
-    if (['Git'].includes(skill.name)) return 'Tools';
     if (['C++'].includes(skill.name)) return 'Programming Languages';
     return 'Other';
   };
