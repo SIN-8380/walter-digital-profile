@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://sin-8380.github.io/walter-digital-profile/sitemap.xml
