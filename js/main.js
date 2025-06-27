@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Workout Planner',
       tech: ['HTML', 'CSS', 'JS'],
       link: 'https://sin-8380.github.io/Project-Toji/',
-      img: '/assets/workoutplanner.jpg',
+      img: 'assets/workoutplanner.jpg',
       desc: 'A modular workout scheduling and timer web app.'
     },
     {
