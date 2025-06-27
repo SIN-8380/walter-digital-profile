@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // === Everything goes here ===
-
+ 
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
 
