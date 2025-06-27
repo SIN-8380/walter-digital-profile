@@ -16,14 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === Sample Data ===
- const skills = [
+  const skills = [
   { name: 'HTML', level: '90%' },
   { name: 'CSS', level: '85%' },
   { name: 'JavaScript', level: '75%' },
   { name: 'Node.js', level: '45%' },
   { name: 'Python', level: '30%' },
   { name: 'Java', level: '20%' },
-  { name: 'MySQL', level: '20%' },
   { name: 'C++', level: '60%' }
 ];
 
@@ -60,27 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Populate Skills ===
   const skillsList = document.querySelector('.skills-list');
- 
-  let currentCategory = '';
-  const orderedSkills = [...skills].sort((a, b) => {
-  const categoryOrder = ['Frontend', 'Backend', 'Database', 'Tools', 'Programming Languages', 'Other'];
-  const getCategory = (skill) => {
-    if (['HTML', 'CSS', 'JavaScript'].includes(skill.name)) return 'Frontend';
-    if (['Node.js', 'Python', 'Java'].includes(skill.name)) return 'Backend';
-    if (['MySQL'].includes(skill.name)) return 'Database';
-    if (['C++'].includes(skill.name)) return 'Programming Languages';
-    return 'Other';
-  };
-  return categoryOrder.indexOf(getCategory(a)) - categoryOrder.indexOf(getCategory(b));
-});
 
-orderedSkills.forEach(skill => {
+  let currentCategory = '';
+  skills.forEach(skill => {
   let category = '';
   if (['HTML', 'CSS', 'JavaScript'].includes(skill.name)) category = 'Frontend';
   else if (['Node.js', 'Python', 'Java'].includes(skill.name)) category = 'Backend';
-  else if (['MySQL'].includes(skill.name)) category = 'Database';
   else if (['C++'].includes(skill.name)) category = 'Programming Languages';
-  else category = 'Other';
 
   if (category !== currentCategory) {
     const heading = document.createElement('h3');
@@ -103,7 +88,7 @@ orderedSkills.forEach(skill => {
   `;
   skillsList.appendChild(el);
 });
-
+ 
   // === Populate Projects Spacers ===
   const projectsGrid = document.querySelector('.projects-grid');
 
