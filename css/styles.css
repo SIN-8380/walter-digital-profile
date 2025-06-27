@@ -1,0 +1,315 @@
+/* ===== Rolex-Inspired Global Theme ===== */
+:root {
+  --bg: #f9f9f4;
+  --text: #1a1a1a;
+  --primary: #005a2b;
+  --accent: goldenrod;
+  --card: #ffffff;
+  --border: #e0e0dc;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+}
+
+h1, h2 {
+  text-align: center;
+  color: var(--primary);
+  margin: 0.5em 0;
+  font-weight: 600;
+}
+
+.section {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+.full-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ===== Navbar Base ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow-x: hidden;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.navbar .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.navbar .nav-right {
+  display: flex;
+   gap: 1.5rem;
+  align-items: center;
+}
+
+.navbar .nav-right a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-right a:hover {
+  color: var(--primary);
+}
+
+/* ===== Hamburger Menu Button (hidden on desktop) ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  gap: 4px;
+  width: 25px;
+  align-items: center;
+  height: 25px;
+  flex-shrink: 0;
+  z-index: 1001;
+
+  position: absolute;     /* Fix it */
+  top: 50%;               /* Center vertically */
+  right: 1rem;            /* Pull it in from the right edge */
+  transform: translateY(-50%); /* Perfect vertical center */
+}
+
+.hamburger span {
+  height: 3px;
+  background-color: var(--text);
+  width: 100%;
+  border-radius: 2px;
+}
+
+/* ===== Mobile Slide-In Glass Menu ===== */
+.mobile-menu {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  height: calc(100vh - 60px);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  width: 100%;
+  max-width: 280px;
+  left: auto;
+  box-sizing: border-box;
+
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+.mobile-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.profile-img img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background-color: white;
+}
+
+.tagline {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #f0f0f0;
+}
+
+/* ===== Skills ===== */
+.skills-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.skills-list div {
+  background-color: var(--card);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* ===== Projects Section===== */
+.projects-grid {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 2rem 0;
+  max-width: 100vw;
+  scroll-padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.projects-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 4px;
+}
+
+.project-card {
+  width: clamp(240px, 90vw, 300px);
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  opacity: 0.5;
+  filter: blur(2px);
+  transition: transform 0.3s, filter 0.3s, opacity 0.3s;
+}
+
+.project-card.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.05);
+}
+
+.spacer {
+  flex: 0 0 calc((100vw - 300px) / 2);
+  pointer-events: none;
+}
+.projects-grid .spacer {
+  flex: 0 0 calc(50vw - 160px); /* If your cards are ~320px wide */
+  pointer-events: none;
+}
+
+.projects-grid div.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1.05);
+}
+
+.project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+
+/* ===== Timeline and Education ===== */
+.timeline, .education-list {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.entry {
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Contact ===== */
+.contact-info a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--accent);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+
+/* ===== Responsive Behavior ===== */
+@media (max-width: 768px) {
+  .navbar .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .profile-img img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .projects-grid {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .project-card {
+    min-width: 240px;
+    max-width: 260px;
+  }
+  .spacer {
+    flex: 0 0 calc((100vw - 260px) / 2);
+  }
+}
