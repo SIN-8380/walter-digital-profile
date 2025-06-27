@@ -80,7 +80,7 @@ h1, h2 {
   color: var(--primary);
 }
 
-/* ===== Hamburger Menu Button (hidden on desktop) ===== */
+/* ===== Hamburger ===== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -93,10 +93,10 @@ h1, h2 {
   flex-shrink: 0;
   z-index: 1001;
 
-  position: absolute;     /* Fix it */
-  top: 50%;               /* Center vertically */
-  right: 1rem;            /* Pull it in from the right edge */
-  transform: translateY(-50%); /* Perfect vertical center */
+  position: absolute;    
+  top: 50%;               
+  right: 1rem;           
+  transform: translateY(-50%);
 }
 
 .hamburger span {
@@ -106,7 +106,7 @@ h1, h2 {
   border-radius: 2px;
 }
 
-/* ===== Mobile Slide-In Glass Menu ===== */
+/* ===== Mobile Slide-In ===== */
 .mobile-menu {
   position: fixed;
   top: 60px;
@@ -224,7 +224,7 @@ h1, h2 {
   pointer-events: none;
 }
 .projects-grid .spacer {
-  flex: 0 0 calc(50vw - 160px); /* If your cards are ~320px wide */
+  flex: 0 0 calc(50vw - 160px); 
   pointer-events: none;
 }
 
@@ -280,7 +280,7 @@ button:hover {
 }
 
 
-/* ===== Responsive Behavior ===== */
+/* ===== Media queries===== */
 @media (max-width: 768px) {
   .navbar .nav-right {
     display: none;
