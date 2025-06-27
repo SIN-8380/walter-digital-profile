@@ -16,20 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === Sample Data ===
-  const skills = [
-    { name: 'HTML', level: '90%' },
-    { name: 'CSS', level: '85%' },
-    { name: 'JavaScript', level: '80%' },
-    { name: 'Node.js', level: '75%' },
-    { name: 'Git', level: '70%' }
-  ];
+ const skills = [
+  { name: 'HTML', level: '90%' },
+  { name: 'CSS', level: '85%' },
+  { name: 'JavaScript', level: '80%' },
+  { name: 'Node.js', level: '75%' },
+  { name: 'Git', level: '70%' }
+];
+
 
   const projects = [
     {
       title: 'Workout Planner',
       tech: ['HTML', 'CSS', 'JS'],
       link: 'https://sin-8380.github.io/Project-Toji/',
-      img: 'assets/workoutplanner.jpg',
+      img: '/assets/workoutplanner.jpg',
       desc: 'A modular workout scheduling and timer web app.'
     },
     {
@@ -57,20 +58,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Populate Skills ===
   const skillsList = document.querySelector('.skills-list');
-  skills.forEach(skill => {
-    const el = document.createElement('div');
-    el.innerHTML = `
-      <strong>${skill.name}</strong>
-      <div style="background:#e0e0dc; border-radius:6px; overflow:hidden;">
-        <div style="width:${skill.level};background:var(--accent);padding:4px 0;color:#fff;text-align:center;">
-          ${skill.level}
-        </div>
-      </div>
-    `;
-    skillsList.appendChild(el);
-  });
 
-  // === Populate Projects with Spacers ===
+let currentCategory = '';
+skills.forEach(skill => {
+ 
+  let category = '';
+  if (['HTML', 'CSS', 'JavaScript'].includes(skill.name)) category = 'Frontend';
+  else if (['Node.js'].includes(skill.name)) category = 'Backend';
+  else if (['Git'].includes(skill.name)) category = 'Tools';
+
+  if (category !== currentCategory) {
+    const heading = document.createElement('h3');
+    heading.textContent = category;
+    heading.style.marginTop = '1.5rem';
+    heading.style.color = 'var(--primary)';
+    heading.style.fontSize = '1.2rem';
+    skillsList.appendChild(heading);
+    currentCategory = category;
+  }
+
+  const el = document.createElement('div');
+  el.innerHTML = `
+    <strong>${skill.name}</strong>
+    <div style="background:#e0e0dc; border-radius:6px; overflow:hidden;">
+      <div style="width:${skill.level};background:var(--accent);padding:4px 0;color:#fff;text-align:center;">
+        ${skill.level}
+      </div>
+    </div>
+  `;
+  skillsList.appendChild(el);
+});
+
+  // === Populate Projects Spacers ===
   const projectsGrid = document.querySelector('.projects-grid');
 
   const spacerStart = document.createElement('div');
@@ -153,5 +172,5 @@ window.addEventListener('resize', updateActiveProjectCard);
     link.click();
   }
 
-  window.downloadCV = downloadCV; // Make callable from button
+  window.downloadCV = downloadCV;
 });
